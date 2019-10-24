@@ -51,10 +51,11 @@ def calcula_posicao_otima(quadros, sequencia_paginas, iterador_pagina):
     for i in range(len(quadros_temp)):
         quadros_temp[i].data_proxima_ocorrencia = -1
 
-    for i in range(iterador_pagina, len(sequencia_paginas)):
-        for j in range(len(quadros_temp)):
-            if (quadros_temp[j].data_proxima_ocorrencia == -1) and (sequencia_paginas[i] == quadros_temp[j].pagina):
+    for j in range(len(quadros_temp)):
+        for i in range(iterador_pagina, len(sequencia_paginas)):
+            if sequencia_paginas[i] == quadros_temp[j].pagina:
                 quadros_temp[j].data_proxima_ocorrencia = i
+                break
 
     maior_data = -1
     pos_maior_data = -1
@@ -66,11 +67,3 @@ def calcula_posicao_otima(quadros, sequencia_paginas, iterador_pagina):
             pos_maior_data = i
 
     return pos_maior_data
-
-
-
-
-
-
-
-
